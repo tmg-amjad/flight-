@@ -12,7 +12,7 @@
                 <div class="col-lg-10">
                   <div class="radio">
                     <label>
-                      <input type="radio" name="path" value="oneway" onclick="setReadOnly(this)">
+                      <input type="radio" name="path" value="oneway"  onclick="setReadOnly(this)">
                       One Way
                     </label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -74,6 +74,22 @@
                   <br>
                 </div>
               </div>
+			  <div class="form-group">
+                <div class="col-lg-10">
+				<label for="select" class="control-label">Extra Luggage</label>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="luggage" value="yes"  onclick="setReadOnly(this)">
+                      Yes
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>
+                      <input type="radio" name="luggage" value="no" checked onclick="setReadOnly(this)">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </div>
               <div class="form-group">
                 <center><button type="submit" id="submit" value="submit" name="submit" class="btn btn-primary">Submit</button></center>
               </div>
@@ -120,6 +136,7 @@
                   <tbody>
                   <tr>
                   <?php if($class==='Economy') {  ?>
+				  <td> <h1>amjad <h1></td>
                    <td><input type="radio" name="chose_to" value="<?php echo $row['fno']; ?>"/><?php echo $row['fno']; ?></td>
                    <td><?php echo $row['departure_time']; ?></td>
                    <td><?php echo $row['arrival_time']; ?></td>
@@ -144,7 +161,8 @@
           }
               else {  die(mysql_error()); }
           } 
-          else if($path==='return') {
+          else if($path==='return') { ?>
+			  <h2 style="color: green"> Date Tip:  </h2><p>Save SEK 500 If you leave on Mon , Jul 3 and return on Fri, Jul 7</p><?php
             echo '<legend>Flights from '.$from.' to '.$to.'</legend>';
               $query1 = "SELECT * FROM `flight_search` WHERE `from_city`= '$from' AND `to_city` = '$to' AND `departure_date` = '$departdate'";
               $result1 = mysql_query($query1);
@@ -165,7 +183,6 @@
                   <tbody>
                   <tr>
                   <?php if($class==='Economy') {  ?>
-
                    <td><input type="radio" required name="chose_to" value="<?php echo $row1['fno']; ?>"/><?php echo $row1['fno']; ?></td>
                    <td><?php echo $row1['departure_time']; ?></td>
                    <td><?php echo $row1['arrival_time']; ?></td>
@@ -206,6 +223,7 @@
                   <tbody>
                   <tr>
                   <?php if($class==='Economy') {  ?>
+				  
                    <td><input type="radio" required name="chose_fro" value="<?php echo $row2['fno']; ?>"/><?php echo $row2['fno']; ?></td>
                    <td><?php echo $row2['departure_time']; ?></td>
                    <td><?php echo $row2['arrival_time']; ?></td>
@@ -233,10 +251,10 @@
          }
           else { ?>
               <h3>Services offered by  Airlines</h3>
-              <h5>Travel across any 4 metro cities in India</h5>
+              <h5>Travel across any cities of world</h5>
               <h5>Free 3 course meals for every passenger</h5>
               <h5>Free Wi-Fi services offered during your flight</h5>
-              <h5>Upto 25 Kg Baggage limit for every passenger</h5>
+              <h5>Upto 35 Kg Baggage limit for every passenger</h5>
               <h5>Unlimited Food and Alcohol in Business Class</h5>
               <h5>Book hotels via  Airlines and avail 10% discount per room</h5>
               <h5>Discounted travel coupons for every city</h5>
